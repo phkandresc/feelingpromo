@@ -20,5 +20,9 @@ document.querySelector('#app').innerHTML = `
 document.body.style.backgroundSize = "cover";
 */
 
+/* agregar boton a instagram */
+const instagramButton = document.createElement('a');
+instagramButton.href = 'https://www.instagram.com/thisfeeling.ec/';
+
 
 setupCounter(document.querySelector('#counter'))
