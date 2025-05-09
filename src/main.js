@@ -25,4 +25,5 @@ const instagramButton = document.createElement('a');
 instagramButton.href = 'https://www.instagram.com/thisfeeling.ec/';
 
 
+
 setupCounter(document.querySelector('#counter'))
