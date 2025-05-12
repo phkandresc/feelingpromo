@@ -134,6 +134,7 @@ html {
 }
 
 .mobile-nav .logo {
+  font-family: 'Bellarina', sans-serif;
   font-size: 2rem;
   font-weight: 800;
   color: var(--primary-color);
@@ -177,10 +178,11 @@ html {
 
 /* Fixed logo */
 .fixed-logo {
+  font-family: 'Bellarina', sans-serif;
   position: fixed;
   top: 1.5rem;
   left: 1.5rem;
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   font-weight: 800;
   color: var(--primary-color);
   z-index: 30;
@@ -202,12 +204,31 @@ html {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url("/images/hero-mobile.jpg");
-  background-size: cover;
-  background-position: center;
-  filter: brightness(0.6);
   z-index: 0;
+  overflow: hidden;
+  filter: brightness(0.6);
   transition: transform 0.1s ease-out;
+}
+
+.hero-bg video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translateX(-50%) translateY(-50%);
+  object-fit: cover;
+}
+
+/* Fallback para cuando el video no está disponible */
+.hero-bg img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none; /* Solo se muestra cuando el video falla */
 }
 
 .hero-gradient {
@@ -910,6 +931,7 @@ html {
     gap: 1rem;
   }
 }
+
 
 /*
 body {

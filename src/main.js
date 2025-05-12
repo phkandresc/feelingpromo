@@ -47,6 +47,12 @@ window.addEventListener("scroll", () => {
   const scrollY = window.scrollY
   if (parallaxBg) {
     parallaxBg.style.transform = `translateY(${scrollY * 0.2}px)`
+
+    // Efecto parallax adicional para el video
+    const heroVideo = document.getElementById("hero-video")
+    if (heroVideo) {
+      heroVideo.style.transform = `translateX(-50%) translateY(calc(-50% + ${scrollY * 0.1}px))`
+    }
   }
 })
 
@@ -195,6 +201,16 @@ document.head.appendChild(style)
 
 // Inicializar
 document.addEventListener("DOMContentLoaded", () => {
+  const heroVideo = document.getElementById("hero-video")
+  const fallbackImg = heroVideo?.querySelector("img")
+
+  // Mostrar imagen de fallback si el video no puede reproducirse
+  if (heroVideo) {
+    heroVideo.addEventListener("error", () => {
+      if (fallbackImg) fallbackImg.style.display = "block"
+    })
+  }
+
   // Make hero content visible immediately
   const heroContent = document.querySelector(".hero-content")
   if (heroContent) {
