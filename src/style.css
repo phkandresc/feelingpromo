@@ -5,12 +5,17 @@
   src: url('./fonts/Bellarina.otf') format('opentype');
 }
 
+@font-face {
+  font-family: 'Linux Libertine';
+  src: url('./fonts/LinLibertine_R.ttf') format('truetype');
+}
+
 :root {
-  --primary-color: #ff3e3e;
-  --secondary-color: #1a1a1a;
-  --text-color: #ffffff;
-  --background-color: #000000;
-  --accent-color: #333333;
+  --primary-color: #8C4587;
+  --secondary-color: #423824;
+  --text-color: #D5DAF2;
+  --background-color: #262311;
+  --accent-color: #BF826B;
 }
 
 * {
@@ -26,7 +31,7 @@ html {
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Literata", sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
   line-height: 1.6;
@@ -49,7 +54,7 @@ body {
 input,
 textarea,
 button {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Literata", sans-serif;
   font-size: 16px; /* Prevent zoom on focus in iOS */
 }
 
@@ -62,7 +67,7 @@ html {
 .noise {
   position: fixed;
   inset: 0;
-  background-image: url("/images/noise.png");
+  background-image: url("./img/");
   opacity: 0.03;
   pointer-events: none;
   z-index: 1;
@@ -190,6 +195,7 @@ html {
 
 /* Hero Section */
 .hero {
+  
   position: relative;
   height: 100vh;
   display: flex;
@@ -228,7 +234,6 @@ html {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: none; /* Solo se muestra cuando el video falla */
 }
 
 .hero-gradient {
@@ -253,10 +258,11 @@ html {
 }
 
 .hero-title {
-  font-size: 3rem;
+  font-family: "Oooh Baby", cursive;
+  font-size: 4rem;
   font-weight: 900;
   line-height: 1.1;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.1rem;
 }
 
 .hero-title span {
