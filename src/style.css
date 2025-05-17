@@ -67,7 +67,7 @@ html {
 .noise {
   position: fixed;
   inset: 0;
-  background-image: url("./img/");
+  background-image: url("");
   opacity: 0.03;
   pointer-events: none;
   z-index: 1;
