@@ -2,24 +2,29 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Feeling</title>
-    <meta
-      name="description"
-      content="Marca de ropa streetwear con estilo único y auténtico"
-    />
+    <meta name="description" content="Marca de ropa streetwear con estilo único" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Meddon&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Oooh+Baby&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="src/img/logo.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
+    <!-- Pantalla de intro -->
+    <div id="intro-screen" class="intro-screen">
+      <div class="intro-content">
+        <div class="intro-logo">Feeling</div>
+        <div class="intro-loader">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <video id="intro-video" class="intro-video" muted playsinline>
+          <source src="/videos/intro-video.mp4" type="video/mp4">
+        </video>
+        <button id="skip-intro" class="skip-intro">SALTAR INTRO</button>
+      </div>
+    </div>
+    
     <!-- Noise overlay -->
     <div class="noise"></div>
 
@@ -33,99 +38,34 @@
     <!-- Mobile navigation -->
     <div id="mobile-nav" class="mobile-nav">
       <div class="mobile-nav-content">
-        <div class="logo">Feeling</div>
+        <div class="logo">FEELING</div>
         <nav>
           <a href="#home" class="nav-link active" data-section="home">Inicio</a>
-          <a href="#productos" class="nav-link" data-section="productos"
-            >Productos</a
-          >
+          <a href="#productos" class="nav-link" data-section="productos">Productos</a>
           <a href="#about" class="nav-link" data-section="about">Nosotros</a>
-          <a href="#contacto" class="nav-link" data-section="contacto"
-            >Contacto</a
-          >
+          <a href="#contacto" class="nav-link" data-section="contacto">Contacto</a>
         </nav>
         <div class="social-icons">
-          <a
-            href="https://instagram.com/thisfeeling.ec"
-            target="_blank"
-            rel="noreferrer"
-            class="social-icon"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+          <a href="https://instagram.com/tu_perfil" target="_blank" rel="noreferrer" class="social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
               <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
               <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
             </svg>
           </a>
-          <a
-            href="https://tiktok.com/@thisfeeling.ec"
-            target="_blank"
-            rel="noreferrer"
-            class="social-icon"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              x="0px"
-              y="0px"
-              width="28"
-              height="28"
-              viewBox="0,0,256,256"
-              stroke="currentColor"
-            >
-              <g
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-miterlimit="10"
-                stroke-dasharray=""
-                stroke-dashoffset="0"
-                font-family="none"
-                font-weight="none"
-                font-size="none"
-                text-anchor="none"
-                style="mix-blend-mode: normal"
-              >
-                <g transform="scale(5.12,5.12)">
-                  <path
-                    d="M9,4c-2.75042,0 -5,2.24958 -5,5v32c0,2.75042 2.24958,5 5,5h32c2.75042,0 5,-2.24958 5,-5v-32c0,-2.75042 -2.24958,-5 -5,-5zM9,6h32c1.67158,0 3,1.32842 3,3v32c0,1.67158 -1.32842,3 -3,3h-32c-1.67158,0 -3,-1.32842 -3,-3v-32c0,-1.67158 1.32842,-3 3,-3zM26.04297,10c-0.5515,0.00005 -0.99887,0.44655 -1,0.99805c0,0 -0.01098,4.87522 -0.02148,9.76172c-0.0053,2.44325 -0.01168,4.88902 -0.01562,6.73047c-0.00394,1.84145 -0.00586,3.0066 -0.00586,3.10352c0,1.81526 -1.64858,3.29883 -3.52734,3.29883c-1.86379,0 -3.35156,-1.48972 -3.35156,-3.35352c0,-1.86379 1.48777,-3.35156 3.35156,-3.35156c0.06314,0 0.1904,0.02075 0.4082,0.04688c0.28415,0.03406 0.56927,-0.05523 0.78323,-0.24529c0.21396,-0.19006 0.33624,-0.46267 0.33591,-0.74885v-4.20117c-0.00005,-0.528 -0.41054,-0.965 -0.9375,-0.99805c-0.15583,-0.0098 -0.35192,-0.0293 -0.58984,-0.0293c-5.24953,0 -9.52734,4.27782 -9.52734,9.52734c0,5.24953 4.27782,9.52734 9.52734,9.52734c5.24938,0 9.52734,-4.27782 9.52734,-9.52734v-9.04883c1.45461,1.16341 3.26752,1.90039 5.26953,1.90039c0.27306,0 0.53277,-0.01618 0.78125,-0.03906c0.51463,-0.04749 0.90832,-0.47927 0.9082,-0.99609v-4.66992c0.0003,-0.52448 -0.40463,-0.9601 -0.92773,-0.99805c-3.14464,-0.22561 -5.65141,-2.67528 -5.97852,-5.79102c-0.05305,-0.50925 -0.48214,-0.89619 -0.99414,-0.89648zM27.04102,12h2.28125c0.72678,3.2987 3.30447,5.8144 6.63672,6.44531v2.86523c-2.13887,-0.10861 -4.01749,-1.1756 -5.12305,-2.85742c-0.24284,-0.36962 -0.69961,-0.53585 -1.12322,-0.40877c-0.4236,0.12708 -0.71344,0.51729 -0.71272,0.95955v11.53516c0,4.16848 -3.35873,7.52734 -7.52734,7.52734c-4.16848,0 -7.52734,-3.35887 -7.52734,-7.52734c0,-4.00052 3.12077,-7.17588 7.05469,-7.43164v2.17578c-2.71358,0.25252 -4.87891,2.47904 -4.87891,5.25586c0,2.94421 2.40735,5.35352 5.35156,5.35352c2.92924,0 5.52734,-2.30609 5.52734,-5.29883c0,0.04892 0.00186,-1.25818 0.00586,-3.09961c0.0039,-1.84143 0.01037,-4.28722 0.01563,-6.73047c0.0094,-4.3869 0.0177,-7.91447 0.01953,-8.76367z"
-                  ></path>
-                </g>
-              </g>
+          <a href="https://tiktok.com/@tu_perfil" target="_blank" rel="noreferrer" class="social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />
+              <path d="M15 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+              <path d="M15 2v20" />
+              <path d="M9 16v6" />
+              <path d="M9 10V4" />
             </svg>
           </a>
-          <a
-            href="https://wa.me/TUNUMERODEWHATSAPP"
-            target="_blank"
-            rel="noreferrer"
-            class="social-icon"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+          <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" rel="noreferrer" class="social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
-              <path
-                d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"
-              />
+              <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
             </svg>
           </a>
         </div>
@@ -133,57 +73,34 @@
     </div>
 
     <!-- Fixed logo -->
-    <div class="fixed-logo">Feeling</div>
+    <div class="fixed-logo">FEELING</div>
 
     <!-- Main content -->
     <main>
       <!-- Hero Section -->
       <section id="home" class="hero">
         <div class="hero-bg" id="parallax-bg">
-            <!--
-            <video autoplay muted loop playsinline id="hero-video">
-            <source src="src/video/video.mp4" type="video/mp4" />
-            Fallback para navegadores que no soportan video
-            <img src="/images/hero-mobile.jpg" alt="Feeling Streetwear" />
-            </video>
-            -->
-            <img src="./src/img/background.avif" alt="Feeling Streetwear"/>
+          <video autoplay muted loop playsinline id="hero-video">
+            <source src="/videos/hero-video.mp4" type="video/mp4">
+            <!-- Fallback para navegadores que no soportan video -->
+            <img src="/images/hero-mobile.jpg" alt="Feeling Streetwear">
+          </video>
         </div>
         <div class="hero-gradient"></div>
-
+        
         <div class="hero-content reveal-element">
-          <h1 class="hero-title">Sensazioni<span></span></h1>
-          <p class="hero-subtitle">
-            Expresa tu estilo.<br />Vive tu autenticidad.
-          </p>
+          <h1 class="hero-title">FEELING <span>STREET</span></h1>
+          <p class="hero-subtitle">Expresa tu estilo.<br>Vive tu autenticidad.</p>
           <div class="cta-buttons">
             <a href="#productos" class="cta-button primary">VER COLECCIÓN</a>
-            <a
-              href="https://wa.me/+593985365745"
-              target="_blank"
-              rel="noreferrer"
-              class="cta-button secondary"
-              >COMPRAR AHORA</a
-            >
+            <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" rel="noreferrer" class="cta-button secondary">COMPRAR AHORA</a>
           </div>
         </div>
 
         <!-- Scroll indicator -->
         <div class="scroll-indicator">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 5V19M12 19L5 12M12 19L19 12"
-              stroke="white"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </div>
       </section>
@@ -200,19 +117,13 @@
           <div class="products-scroll">
             <div class="product-card reveal-element" data-delay="0">
               <div class="product-image">
-                <img src="./src/img/background.avif" alt="Urban Hoodie" loading="lazy"/>
+                <img src="/images/producto1.jpg" alt="Urban Hoodie" />
                 <div class="product-gradient"></div>
                 <div class="product-info">
-                  <h3>Jersey</h3>
+                  <h3>Urban Hoodie</h3>
                   <div class="product-details">
-                    <span class="product-price">$24.99</span>
-                    <a
-                      href="https://wa.me/+593985365745"
-                      target="_blank"
-                      rel="noreferrer"
-                      class="product-buy"
-                      >COMPRAR</a
-                    >
+                    <span class="product-price">$59.99</span>
+                    <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" rel="noreferrer" class="product-buy">COMPRAR</a>
                   </div>
                 </div>
               </div>
@@ -220,19 +131,13 @@
 
             <div class="product-card reveal-element" data-delay="100">
               <div class="product-image">
-                <img src="/" alt="Street Tee" />
+                <img src="/images/producto2.jpg" alt="Street Tee" />
                 <div class="product-gradient"></div>
                 <div class="product-info">
                   <h3>Street Tee</h3>
                   <div class="product-details">
                     <span class="product-price">$29.99</span>
-                    <a
-                      href="https://wa.me/TUNUMERODEWHATSAPP"
-                      target="_blank"
-                      rel="noreferrer"
-                      class="product-buy"
-                      >COMPRAR</a
-                    >
+                    <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" rel="noreferrer" class="product-buy">COMPRAR</a>
                   </div>
                 </div>
               </div>
@@ -240,19 +145,13 @@
 
             <div class="product-card reveal-element" data-delay="200">
               <div class="product-image">
-                <img src="/" alt="Cargo Pants" />
+                <img src="/images/producto3.jpg" alt="Cargo Pants" />
                 <div class="product-gradient"></div>
                 <div class="product-info">
                   <h3>Cargo Pants</h3>
                   <div class="product-details">
                     <span class="product-price">$49.99</span>
-                    <a
-                      href="https://wa.me/TUNUMERODEWHATSAPP"
-                      target="_blank"
-                      rel="noreferrer"
-                      class="product-buy"
-                      >COMPRAR</a
-                    >
+                    <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" rel="noreferrer" class="product-buy">COMPRAR</a>
                   </div>
                 </div>
               </div>
@@ -260,19 +159,13 @@
 
             <div class="product-card reveal-element" data-delay="300">
               <div class="product-image">
-                <img src="/" alt="Urban Cap" />
+                <img src="/images/producto4.jpg" alt="Urban Cap" />
                 <div class="product-gradient"></div>
                 <div class="product-info">
                   <h3>Urban Cap</h3>
                   <div class="product-details">
                     <span class="product-price">$24.99</span>
-                    <a
-                      href="https://wa.me/TUNUMERODEWHATSAPP"
-                      target="_blank"
-                      rel="noreferrer"
-                      class="product-buy"
-                      >COMPRAR</a
-                    >
+                    <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" rel="noreferrer" class="product-buy">COMPRAR</a>
                   </div>
                 </div>
               </div>
@@ -300,17 +193,15 @@
           </div>
 
           <div class="about-image reveal-element">
-            <img src="./src/img/background.avif" alt="Sobre Feeling Streetwear" loading="lazy" />
+            <img src="/images/about-image.jpg" alt="Sobre Feeling Streetwear" />
             <div class="image-gradient"></div>
           </div>
 
           <p class="about-text reveal-element">
-            Somos una marca de ropa streetwear que nace de la pasión por la
-            cultura urbana y la autenticidad.
+            Somos una marca de ropa streetwear que nace de la pasión por la cultura urbana y la autenticidad.
           </p>
           <p class="about-text reveal-element">
-            Cada pieza es única, con materiales de alta calidad y diseños
-            exclusivos que reflejan el espíritu de la calle.
+            Cada pieza es única, con materiales de alta calidad y diseños exclusivos que reflejan el espíritu de la calle.
           </p>
 
           <!-- Values with icons -->
@@ -344,65 +235,24 @@
 
         <!-- Social media links -->
         <div class="social-links">
-          <a
-            href="https://instagram.com/thisfeeling.ec"
-            target="_blank"
-            rel="noreferrer"
-            class="social-link instagram reveal-element"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+          <a href="https://instagram.com/tu_perfil" target="_blank" rel="noreferrer" class="social-link instagram reveal-element">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
               <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
               <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
             </svg>
             <div class="social-link-content">
               <h3>Instagram</h3>
-              <p>@thisfeeling.ec</p>
+              <p>@tu_perfil</p>
             </div>
-            <svg
-              class="arrow-icon"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h14" />
               <path d="m12 5 7 7-7 7" />
             </svg>
           </a>
 
-          <a
-            href="https://tiktok.com/@tu_perfil"
-            target="_blank"
-            rel="noreferrer"
-            class="social-link tiktok reveal-element"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+          <a href="https://tiktok.com/@tu_perfil" target="_blank" rel="noreferrer" class="social-link tiktok reveal-element">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />
               <path d="M15 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
               <path d="M15 2v20" />
@@ -411,63 +261,24 @@
             </svg>
             <div class="social-link-content">
               <h3>TikTok</h3>
-              <p>@thisfeeling.ec</p>
+              <p>@tu_perfil</p>
             </div>
-            <svg
-              class="arrow-icon"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h14" />
               <path d="m12 5 7 7-7 7" />
             </svg>
           </a>
 
-          <a
-            href="https://wa.me/+593985365745"
-            target="_blank"
-            rel="noreferrer"
-            class="social-link whatsapp reveal-element"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+          <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" rel="noreferrer" class="social-link whatsapp reveal-element">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
-              <path
-                d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"
-              />
+              <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
             </svg>
             <div class="social-link-content">
               <h3>WhatsApp</h3>
               <p>Compra directa</p>
             </div>
-            <svg
-              class="arrow-icon"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h14" />
               <path d="m12 5 7 7-7 7" />
             </svg>
@@ -478,110 +289,38 @@
         <div class="instagram-section">
           <h3 class="instagram-title reveal-element">Instagram Feed</h3>
           <div class="instagram-grid">
-            <a
-              href="https://instagram.com/thisfeeling.ec"
-              target="_blank"
-              rel="noreferrer"
-              class="instagram-post reveal-element"
-              data-delay="0"
-            >
-              <img src="src/img/background.avif" alt="Instagram post" />
+            <a href="https://instagram.com/tu_perfil" target="_blank" rel="noreferrer" class="instagram-post reveal-element" data-delay="0">
+              <img src="/images/insta1.jpg" alt="Instagram post" />
               <div class="instagram-overlay">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path
-                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-                  />
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                 </svg>
                 <span>142</span>
               </div>
             </a>
-            <a
-              href="https://instagram.com/tu_perfil"
-              target="_blank"
-              rel="noreferrer"
-              class="instagram-post reveal-element"
-              data-delay="100"
-            >
-              <img src="" alt="Instagram post" />
+            <a href="https://instagram.com/tu_perfil" target="_blank" rel="noreferrer" class="instagram-post reveal-element" data-delay="100">
+              <img src="/images/insta2.jpg" alt="Instagram post" />
               <div class="instagram-overlay">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path
-                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-                  />
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                 </svg>
                 <span>98</span>
               </div>
             </a>
-            <a
-              href="https://instagram.com/tu_perfil"
-              target="_blank"
-              rel="noreferrer"
-              class="instagram-post reveal-element"
-              data-delay="200"
-            >
+            <a href="https://instagram.com/tu_perfil" target="_blank" rel="noreferrer" class="instagram-post reveal-element" data-delay="200">
               <img src="/images/insta3.jpg" alt="Instagram post" />
               <div class="instagram-overlay">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path
-                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-                  />
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                 </svg>
                 <span>215</span>
               </div>
             </a>
-            <a
-              href="https://instagram.com/tu_perfil"
-              target="_blank"
-              rel="noreferrer"
-              class="instagram-post reveal-element"
-              data-delay="300"
-            >
+            <a href="https://instagram.com/tu_perfil" target="_blank" rel="noreferrer" class="instagram-post reveal-element" data-delay="300">
               <img src="/images/insta4.jpg" alt="Instagram post" />
               <div class="instagram-overlay">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path
-                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-                  />
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                 </svg>
                 <span>167</span>
               </div>
@@ -598,27 +337,10 @@
         </div>
 
         <!-- WhatsApp CTA -->
-        <a
-          href="https://wa.me/+593985365745"
-          target="_blank"
-          rel="noreferrer"
-          class="whatsapp-cta reveal-element"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
+        <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" rel="noreferrer" class="whatsapp-cta reveal-element">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
-            <path
-              d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"
-            />
+            <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
           </svg>
           COMPRAR POR WHATSAPP
         </a>
@@ -628,41 +350,19 @@
           <h3 class="form-title">Déjanos tu contacto</h3>
 
           <div class="form-group">
-            <input
-              type="text"
-              id="nombre"
-              name="nombre"
-              placeholder="Nombre"
-              required
-            />
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre" required />
           </div>
 
           <div class="form-group">
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Email"
-              required
-            />
+            <input type="email" id="email" name="email" placeholder="Email" required />
           </div>
 
           <div class="form-group">
-            <input
-              type="tel"
-              id="telefono"
-              name="telefono"
-              placeholder="Teléfono (opcional)"
-            />
+            <input type="tel" id="telefono" name="telefono" placeholder="Teléfono (opcional)" />
           </div>
 
           <div class="form-group">
-            <textarea
-              id="mensaje"
-              name="mensaje"
-              placeholder="Mensaje"
-              required
-            ></textarea>
+            <textarea id="mensaje" name="mensaje" placeholder="Mensaje" required></textarea>
           </div>
 
           <button type="submit" class="submit-button">ENVIAR</button>
@@ -673,98 +373,44 @@
     <!-- Footer -->
     <footer class="footer">
       <div class="footer-content">
-        <div class="footer-logo">Feeling</div>
+        <div class="footer-logo">FEELING</div>
 
         <div class="footer-social">
-          <a
-            href="https://instagram.com/tu_perfil"
-            target="_blank"
-            rel="noreferrer"
-            class="footer-icon"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+          <a href="https://instagram.com/tu_perfil" target="_blank" rel="noreferrer" class="footer-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
               <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
               <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
             </svg>
           </a>
-          <a
-            href="https://tiktok.com/@tu_perfil"
-            target="_blank"
-            rel="noreferrer"
-            class="footer-icon"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="28" height="28" viewBox="0,0,256,256" stroke="currentColor">
-              <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
-                <g transform="scale(5.12,5.12)">
-                  <path d="M9,4c-2.75042,0 -5,2.24958 -5,5v32c0,2.75042 2.24958,5 5,5h32c2.75042,0 5,-2.24958 5,-5v-32c0,-2.75042 -2.24958,-5 -5,-5zM9,6h32c1.67158,0 3,1.32842 3,3v32c0,1.67158 -1.32842,3 -3,3h-32c-1.67158,0 -3,-1.32842 -3,-3v-32c0,-1.67158 1.32842,-3 3,-3zM26.04297,10c-0.5515,0.00005 -0.99887,0.44655 -1,0.99805c0,0 -0.01098,4.87522 -0.02148,9.76172c-0.0053,2.44325 -0.01168,4.88902 -0.01562,6.73047c-0.00394,1.84145 -0.00586,3.0066 -0.00586,3.10352c0,1.81526 -1.64858,3.29883 -3.52734,3.29883c-1.86379,0 -3.35156,-1.48972 -3.35156,-3.35352c0,-1.86379 1.48777,-3.35156 3.35156,-3.35156c0.06314,0 0.1904,0.02075 0.4082,0.04688c0.28415,0.03406 0.56927,-0.05523 0.78323,-0.24529c0.21396,-0.19006 0.33624,-0.46267 0.33591,-0.74885v-4.20117c-0.00005,-0.528 -0.41054,-0.965 -0.9375,-0.99805c-0.15583,-0.0098 -0.35192,-0.0293 -0.58984,-0.0293c-5.24953,0 -9.52734,4.27782 -9.52734,9.52734c0,5.24953 4.27782,9.52734 9.52734,9.52734c5.24938,0 9.52734,-4.27782 9.52734,-9.52734v-9.04883c1.45461,1.16341 3.26752,1.90039 5.26953,1.90039c0.27306,0 0.53277,-0.01618 0.78125,-0.03906c0.51463,-0.04749 0.90832,-0.47927 0.9082,-0.99609v-4.66992c0.0003,-0.52448 -0.40463,-0.9601 -0.92773,-0.99805c-3.14464,-0.22561 -5.65141,-2.67528 -5.97852,-5.79102c-0.05305,-0.50925 -0.48214,-0.89619 -0.99414,-0.89648zM27.04102,12h2.28125c0.72678,3.2987 3.30447,5.8144 6.63672,6.44531v2.86523c-2.13887,-0.10861 -4.01749,-1.1756 -5.12305,-2.85742c-0.24284,-0.36962 -0.69961,-0.53585 -1.12322,-0.40877c-0.4236,0.12708 -0.71344,0.51729 -0.71272,0.95955v11.53516c0,4.16848 -3.35873,7.52734 -7.52734,7.52734c-4.16848,0 -7.52734,-3.35887 -7.52734,-7.52734c0,-4.00052 3.12077,-7.17588 7.05469,-7.43164v2.17578c-2.71358,0.25252 -4.87891,2.47904 -4.87891,5.25586c0,2.94421 2.40735,5.35352 5.35156,5.35352c2.92924,0 5.52734,-2.30609 5.52734,-5.29883c0,0.04892 0.00186,-1.25818 0.00586,-3.09961c0.0039,-1.84143 0.01037,-4.28722 0.01563,-6.73047c0.0094,-4.3869 0.0177,-7.91447 0.01953,-8.76367z"></path>
-                </g>
-              </g>
+          <a href="https://tiktok.com/@tu_perfil" target="_blank" rel="noreferrer" class="footer-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />
+              <path d="M15 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+              <path d="M15 2v20" />
+              <path d="M9 16v6" />
+              <path d="M9 10V4" />
             </svg>
           </a>
-          <a
-            href="https://wa.me/+593985365745"
-            target="_blank"
-            rel="noreferrer"
-            class="footer-icon"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+          <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" rel="noreferrer" class="footer-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
-              <path
-                d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"
-              />
+              <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
             </svg>
           </a>
         </div>
 
         <div class="footer-copyright">
-          <p>&copy; 2025 Feeling Streetwear. Todos los derechos reservados.</p>
+          <p>&copy; 2025 FEELING Streetwear. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>
 
     <!-- Fixed WhatsApp button -->
-    <a
-      href="https://wa.me/TUNUMERODEWHATSAPP"
-      target="_blank"
-      rel="noreferrer"
-      class="whatsapp-float"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="28"
-        height="28"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
+    <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" rel="noreferrer" class="whatsapp-float">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
-        <path
-          d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"
-        />
+        <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
       </svg>
     </a>
 
