@@ -12,7 +12,7 @@
 
 :root {
   --primary-color: #2d0652;
-  --secondary-color: #3f291a;
+  --secondary-color: #5a4c43;
   --text-color: #ffffff;
   --background-color: #000000;
   --accent-color: #333333;
@@ -40,7 +40,7 @@
 
 .intro-content {
   text-align: center;
-  position: relative;
+
 }
 
 .intro-logo {
