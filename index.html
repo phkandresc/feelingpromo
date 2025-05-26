@@ -1,419 +1,487 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Feeling</title>
-    <meta name="description" content="Marca de ropa streetwear con estilo único" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="src/style.css" />
-  </head>
-  <body>
-    <!-- Pantalla de intro -->
-    <div id="intro-screen" class="intro-screen">
-      <div class="intro-content">
-        <div class="intro-logo">Feeling</div>
-        <div class="intro-loader">
-          <span></span><span></span><span></span><span></span>
-        </div>
-        <video id="intro-video" class="intro-video" muted playsinline>
-            <source src="src/video/video.webm" type="video/webm">
-        </video>
-        <button id="skip-intro" class="skip-intro">SALTAR INTRO</button>
-      </div>
-    </div>
-    
-    <!-- Noise overlay -->
-    <div class="noise"></div>
-
-    <!-- Mobile menu button -->
-    <button id="menu-toggle" class="menu-toggle">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
-
-    <!-- Mobile navigation -->
-    <div id="mobile-nav" class="mobile-nav">
-      <div class="mobile-nav-content">
-        <div class="logo">FEELING</div>
-        <nav>
-          <a href="#home" class="nav-link active" data-section="home">Inicio</a>
-          <a href="#productos" class="nav-link" data-section="productos">Productos</a>
-          <a href="#about" class="nav-link" data-section="about">Nosotros</a>
-          <a href="#contacto" class="nav-link" data-section="contacto">Contacto</a>
-        </nav>
-        <div class="social-icons">
-          <a href="https://instagram.com/tu_perfil" target="_blank" rel="noreferrer" class="social-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-            </svg>
-          </a>
-          <a href="https://tiktok.com/@tu_perfil" target="_blank" rel="noreferrer" class="social-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />
-              <path d="M15 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
-              <path d="M15 2v20" />
-              <path d="M9 16v6" />
-              <path d="M9 10V4" />
-            </svg>
-          </a>
-          <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" rel="noreferrer" class="social-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
-              <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Fixed logo -->
-    <div class="fixed-logo">FEELING</div>
-
-    <!-- Main content -->
-    <main>
-      <!-- Hero Section -->
-      <section id="home" class="hero">
-        <div class="hero-bg" id="parallax-bg">
-          <video autoplay muted loop playsinline id="hero-video">
-            <source src="" type="video/mp4">
-            <!-- Fallback para navegadores que no soportan video -->
-            <img src="/images/hero-mobile.jpg" alt="Feeling Streetwear">
-          </video>
-        </div>
-        <div class="hero-gradient"></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FEELING</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-bg {
+            background-image: linear-gradient(to right, rgba(0,0,0,0.3), transparent), url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
         
-        <div class="hero-content reveal-element">
-          <h1 class="hero-title">FEELING <span>STREET</span></h1>
-          <p class="hero-subtitle">Expresa tu estilo.<br>Vive tu autenticidad.</p>
-          <div class="cta-buttons">
-            <a href="#productos" class="cta-button primary">VER COLECCIÓN</a>
-            <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" rel="noreferrer" class="cta-button secondary">COMPRAR AHORA</a>
-          </div>
-        </div>
-
-        <!-- Scroll indicator -->
-        <div class="scroll-indicator">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </div>
-      </section>
-
-      <!-- Products Section -->
-      <section id="productos" class="productos">
-        <div class="section-header reveal-element">
-          <h2 class="section-title">NUESTRA <span>COLECCIÓN</span></h2>
-          <div class="section-divider"></div>
-        </div>
-
-        <!-- Product cards with horizontal scroll -->
-        <div class="products-container">
-          <div class="products-scroll">
-            <div class="product-card reveal-element" data-delay="0">
-              <div class="product-image">
-                <img src="/images/producto1.jpg" alt="Urban Hoodie" />
-                <div class="product-gradient"></div>
-                <div class="product-info">
-                  <h3>Urban Hoodie</h3>
-                  <div class="product-details">
-                    <span class="product-price">$59.99</span>
-                    <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" rel="noreferrer" class="product-buy">COMPRAR</a>
-                  </div>
+        .article-img-1 {
+            background-image: url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .article-img-2 {
+            background-image: url('https://images.unsplash.com/photo-1509631179647-0177331693ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .article-img-3 {
+            background-image: url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .lookbook-img {
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .scale-hover {
+            transition: transform 0.5s ease;
+        }
+        
+        .scale-hover:hover {
+            transform: scale(1.05);
+        }
+        
+        .overlay-hover {
+            transition: background-color 0.3s ease;
+        }
+        
+        .overlay-hover:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-white smooth-scroll">
+    <!-- Header -->
+    <header class="border-b border-gray-100 sticky top-0 bg-white/95 backdrop-blur-sm z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-4">
+                    <button id="mobile-menu-btn" class="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                        <i class="fas fa-bars text-gray-600"></i>
+                    </button>
+                    <nav class="hidden md:flex space-x-8">
+                        <a href="#editorial" class="text-sm font-medium hover:text-gray-600 transition-colors">EDITORIAL</a>
+                        <a href="#tendencias" class="text-sm font-medium hover:text-gray-600 transition-colors">TENDENCIAS</a>
+                        <a href="#street-style" class="text-sm font-medium hover:text-gray-600 transition-colors">STREET STYLE</a>
+                    </nav>
                 </div>
-              </div>
-            </div>
 
-            <div class="product-card reveal-element" data-delay="100">
-              <div class="product-image">
-                <img src="/images/producto2.jpg" alt="Street Tee" />
-                <div class="product-gradient"></div>
-                <div class="product-info">
-                  <h3>Street Tee</h3>
-                  <div class="product-details">
-                    <span class="product-price">$29.99</span>
-                    <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" rel="noreferrer" class="product-buy">COMPRAR</a>
-                  </div>
+                <div class="absolute left-1/2 transform -translate-x-1/2">
+                    <h1 class="text-2xl md:text-3xl font-bold tracking-wider cursor-pointer" onclick="scrollToTop()">FEELING</h1>
                 </div>
-              </div>
-            </div>
 
-            <div class="product-card reveal-element" data-delay="200">
-              <div class="product-image">
-                <img src="/images/producto3.jpg" alt="Cargo Pants" />
-                <div class="product-gradient"></div>
-                <div class="product-info">
-                  <h3>Cargo Pants</h3>
-                  <div class="product-details">
-                    <span class="product-price">$49.99</span>
-                    <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" rel="noreferrer" class="product-buy">COMPRAR</a>
-                  </div>
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                        <i class="fas fa-search text-gray-600"></i>
+                    </button>
+                    <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                        <i class="fas fa-shopping-bag text-gray-600"></i>
+                    </button>
+                    <div class="hidden md:flex space-x-6">
+                        <a href="#lookbook" class="text-sm font-medium hover:text-gray-600 transition-colors">LOOKBOOK</a>
+                        <a href="#contacto" class="text-sm font-medium hover:text-gray-600 transition-colors">CONTACTO</a>
+                    </div>
                 </div>
-              </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <nav class="container mx-auto px-4 py-4 space-y-2">
+                <a href="#editorial" class="block py-2 text-sm font-medium hover:text-gray-600 transition-colors">EDITORIAL</a>
+                <a href="#tendencias" class="block py-2 text-sm font-medium hover:text-gray-600 transition-colors">TENDENCIAS</a>
+                <a href="#street-style" class="block py-2 text-sm font-medium hover:text-gray-600 transition-colors">STREET STYLE</a>
+                <a href="#lookbook" class="block py-2 text-sm font-medium hover:text-gray-600 transition-colors">LOOKBOOK</a>
+                <a href="#contacto" class="block py-2 text-sm font-medium hover:text-gray-600 transition-colors">CONTACTO</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden hero-bg">
+        <div class="relative z-20 text-center text-white max-w-4xl mx-auto px-4 fade-in">
+            <span class="inline-block mb-6 px-4 py-2 border border-white text-white text-sm font-medium tracking-wide">
+                NUEVA COLECCIÓN
+            </span>
+            <h2 class="text-4xl md:text-7xl font-bold mb-6 leading-tight">
+                PRIMAVERA
+                <br>
+                <span class="italic font-light">Esencial</span>
+            </h2>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto leading-relaxed">
+                Descubre las tendencias que definirán la temporada. Una colección que celebra la feminidad moderna y la elegancia atemporal.
+            </p>
+            <button class="bg-white text-black hover:bg-gray-100 px-8 py-3 font-medium tracking-wide transition-colors" onclick="scrollToSection('editorial')">
+                EXPLORAR COLECCIÓN
+            </button>
+        </div>
+    </section>
+
+    <!-- Featured Articles -->
+    <section id="editorial" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h3 class="text-3xl md:text-4xl font-bold mb-4">EDITORIAL</h3>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Las últimas tendencias, entrevistas exclusivas y los looks que están marcando la diferencia en el mundo de la moda.
+                </p>
             </div>
 
-            <div class="product-card reveal-element" data-delay="300">
-              <div class="product-image">
-                <img src="/images/producto4.jpg" alt="Urban Cap" />
-                <div class="product-gradient"></div>
-                <div class="product-info">
-                  <h3>Urban Cap</h3>
-                  <div class="product-details">
-                    <span class="product-price">$24.99</span>
-                    <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" rel="noreferrer" class="product-buy">COMPRAR</a>
-                  </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Main Article -->
+                <div class="md:col-span-2 lg:col-span-2 fade-in">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden group cursor-pointer" onclick="openArticle('main')">
+                        <div class="relative overflow-hidden">
+                            <div class="article-img-1 w-full h-96 scale-hover"></div>
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-black text-white px-3 py-1 text-sm font-medium">TENDENCIA</span>
+                            </div>
+                            <div class="absolute bottom-4 right-4 flex space-x-2">
+                                <button class="bg-white/90 hover:bg-white p-2 rounded-lg transition-colors" onclick="event.stopPropagation(); toggleLike(this)">
+                                    <i class="far fa-heart text-gray-700"></i>
+                                </button>
+                                <button class="bg-white/90 hover:bg-white p-2 rounded-lg transition-colors" onclick="event.stopPropagation(); shareArticle()">
+                                    <i class="fas fa-share text-gray-700"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-2xl font-bold mb-3">El Minimalismo Redefinido</h4>
+                            <p class="text-gray-600 mb-4 leading-relaxed">
+                                Exploramos cómo el minimalismo evoluciona en 2024, incorporando texturas inesperadas y siluetas arquitectónicas que desafían las convenciones tradicionales.
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-500">Por María González • 15 min de lectura</span>
+                                <button class="text-black font-semibold hover:underline">
+                                    LEER MÁS →
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+
+                <!-- Side Articles -->
+                <div class="space-y-8">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden group cursor-pointer fade-in" onclick="openArticle('side1')">
+                        <div class="relative overflow-hidden">
+                            <div class="article-img-2 w-full h-48 scale-hover"></div>
+                            <span class="absolute top-3 left-3 bg-white text-black px-3 py-1 text-sm font-medium">STREET STYLE</span>
+                        </div>
+                        <div class="p-4">
+                            <h5 class="font-bold mb-2">Looks de Calle que Inspiran</h5>
+                            <p class="text-sm text-gray-600 mb-3">
+                                Las mejores combinaciones vistas en las calles de Madrid y Barcelona.
+                            </p>
+                            <button class="text-black text-sm font-semibold hover:underline">
+                                VER GALERÍA →
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden group cursor-pointer fade-in" onclick="openArticle('side2')">
+                        <div class="relative overflow-hidden">
+                            <div class="article-img-3 w-full h-48 scale-hover"></div>
+                            <span class="absolute top-3 left-3 bg-black text-white px-3 py-1 text-sm font-medium">ENTREVISTA</span>
+                        </div>
+                        <div class="p-4">
+                            <h5 class="font-bold mb-2">Diseñadores Emergentes</h5>
+                            <p class="text-sm text-gray-600 mb-3">
+                                Conversamos con los nuevos talentos que están revolucionando la industria.
+                            </p>
+                            <button class="text-black text-sm font-semibold hover:underline">
+                                LEER ENTREVISTA →
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
+    </section>
 
-        <!-- Scroll indicator for products -->
-        <div class="scroll-dots">
-          <span class="dot active"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
+    <!-- Lookbook Gallery -->
+    <section id="lookbook" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h3 class="text-3xl md:text-4xl font-bold mb-4">LOOKBOOK</h3>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Una cuidada selección de looks que capturan la esencia de FEELING. Cada pieza cuenta una historia única.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="lookbook-grid">
+                <!-- Las imágenes se generarán con JavaScript -->
+            </div>
+
+            <div class="text-center mt-12 fade-in">
+                <button class="border border-gray-300 hover:bg-gray-50 px-8 py-3 font-medium tracking-wide transition-colors">
+                    VER LOOKBOOK COMPLETO
+                </button>
+            </div>
         </div>
-      </section>
+    </section>
 
-      <!-- About Section with creative design -->
-      <section id="about" class="about">
-        <!-- Diagonal background -->
-        <div class="diagonal-bg"></div>
-
-        <div class="section-content">
-          <div class="section-header reveal-element">
-            <h2 class="section-title">SOBRE <span>FEELING</span></h2>
-            <div class="section-divider"></div>
-          </div>
-
-          <div class="about-image reveal-element">
-            <img src="/images/about-image.jpg" alt="Sobre Feeling Streetwear" />
-            <div class="image-gradient"></div>
-          </div>
-
-          <p class="about-text reveal-element">
-            Somos una marca de ropa streetwear que nace de la pasión por la cultura urbana y la autenticidad.
-          </p>
-          <p class="about-text reveal-element">
-            Cada pieza es única, con materiales de alta calidad y diseños exclusivos que reflejan el espíritu de la calle.
-          </p>
-
-          <!-- Values with icons -->
-          <div class="values-grid">
-            <div class="value-card reveal-element" data-delay="0">
-              <span class="value-icon">🔥</span>
-              <span class="value-label">Autenticidad</span>
-            </div>
-            <div class="value-card reveal-element" data-delay="100">
-              <span class="value-icon">💯</span>
-              <span class="value-label">Calidad</span>
-            </div>
-            <div class="value-card reveal-element" data-delay="200">
-              <span class="value-icon">🌐</span>
-              <span class="value-label">Cultura</span>
-            </div>
-            <div class="value-card reveal-element" data-delay="300">
-              <span class="value-icon">🚀</span>
-              <span class="value-label">Innovación</span>
-            </div>
-          </div>
+    <!-- Newsletter -->
+    <section class="py-20 bg-black text-white">
+        <div class="container mx-auto px-4 text-center fade-in">
+            <h3 class="text-3xl md:text-4xl font-bold mb-6">MANTENTE AL DÍA</h3>
+            <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
+                Suscríbete a nuestro newsletter y sé la primera en conocer las últimas tendencias, lanzamientos exclusivos y contenido editorial.
+            </p>
+            <form class="max-w-md mx-auto flex gap-4" onsubmit="subscribeNewsletter(event)">
+                <input
+                    type="email"
+                    placeholder="Tu email"
+                    required
+                    class="flex-1 bg-white/10 border border-white/20 text-white placeholder:text-gray-400 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50"
+                    id="newsletter-email"
+                />
+                <button type="submit" class="bg-white text-black hover:bg-gray-100 px-8 py-3 font-medium rounded-lg transition-colors">
+                    SUSCRIBIRSE
+                </button>
+            </form>
+            <p class="text-xs text-gray-400 mt-4">
+                Al suscribirte, aceptas recibir emails de FEELING. Puedes darte de baja en cualquier momento.
+            </p>
         </div>
-      </section>
-
-      <!-- Social Media Section -->
-      <section id="social" class="social">
-        <div class="section-header reveal-element">
-          <h2 class="section-title">SÍGUENOS <span>ONLINE</span></h2>
-          <div class="section-divider"></div>
-        </div>
-
-        <!-- Social media links -->
-        <div class="social-links">
-          <a href="https://instagram.com/tu_perfil" target="_blank" rel="noreferrer" class="social-link instagram reveal-element">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-            </svg>
-            <div class="social-link-content">
-              <h3>Instagram</h3>
-              <p>@tu_perfil</p>
-            </div>
-            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14" />
-              <path d="m12 5 7 7-7 7" />
-            </svg>
-          </a>
-
-          <a href="https://tiktok.com/@tu_perfil" target="_blank" rel="noreferrer" class="social-link tiktok reveal-element">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />
-              <path d="M15 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
-              <path d="M15 2v20" />
-              <path d="M9 16v6" />
-              <path d="M9 10V4" />
-            </svg>
-            <div class="social-link-content">
-              <h3>TikTok</h3>
-              <p>@tu_perfil</p>
-            </div>
-            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14" />
-              <path d="m12 5 7 7-7 7" />
-            </svg>
-          </a>
-
-          <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" rel="noreferrer" class="social-link whatsapp reveal-element">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
-              <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
-            </svg>
-            <div class="social-link-content">
-              <h3>WhatsApp</h3>
-              <p>Compra directa</p>
-            </div>
-            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14" />
-              <path d="m12 5 7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-
-        <!-- Instagram feed -->
-        <div class="instagram-section">
-          <h3 class="instagram-title reveal-element">Instagram Feed</h3>
-          <div class="instagram-grid">
-            <a href="https://instagram.com/tu_perfil" target="_blank" rel="noreferrer" class="instagram-post reveal-element" data-delay="0">
-              <img src="/images/insta1.jpg" alt="Instagram post" />
-              <div class="instagram-overlay">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                </svg>
-                <span>142</span>
-              </div>
-            </a>
-            <a href="https://instagram.com/tu_perfil" target="_blank" rel="noreferrer" class="instagram-post reveal-element" data-delay="100">
-              <img src="/images/insta2.jpg" alt="Instagram post" />
-              <div class="instagram-overlay">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                </svg>
-                <span>98</span>
-              </div>
-            </a>
-            <a href="https://instagram.com/tu_perfil" target="_blank" rel="noreferrer" class="instagram-post reveal-element" data-delay="200">
-              <img src="/images/insta3.jpg" alt="Instagram post" />
-              <div class="instagram-overlay">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                </svg>
-                <span>215</span>
-              </div>
-            </a>
-            <a href="https://instagram.com/tu_perfil" target="_blank" rel="noreferrer" class="instagram-post reveal-element" data-delay="300">
-              <img src="/images/insta4.jpg" alt="Instagram post" />
-              <div class="instagram-overlay">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                </svg>
-                <span>167</span>
-              </div>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Contact Section -->
-      <section id="contacto" class="contacto">
-        <div class="section-header reveal-element">
-          <h2 class="section-title">CONTÁCTANOS</h2>
-          <div class="section-divider"></div>
-        </div>
-
-        <!-- WhatsApp CTA -->
-        <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" rel="noreferrer" class="whatsapp-cta reveal-element">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
-            <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
-          </svg>
-          COMPRAR POR WHATSAPP
-        </a>
-
-        <!-- Contact form -->
-        <form id="contact-form" class="contact-form reveal-element">
-          <h3 class="form-title">Déjanos tu contacto</h3>
-
-          <div class="form-group">
-            <input type="text" id="nombre" name="nombre" placeholder="Nombre" required />
-          </div>
-
-          <div class="form-group">
-            <input type="email" id="email" name="email" placeholder="Email" required />
-          </div>
-
-          <div class="form-group">
-            <input type="tel" id="telefono" name="telefono" placeholder="Teléfono (opcional)" />
-          </div>
-
-          <div class="form-group">
-            <textarea id="mensaje" name="mensaje" placeholder="Mensaje" required></textarea>
-          </div>
-
-          <button type="submit" class="submit-button">ENVIAR</button>
-        </form>
-      </section>
-    </main>
+    </section>
 
     <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-content">
-        <div class="footer-logo">FEELING</div>
+    <footer id="contacto" class="bg-gray-50 py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2 fade-in">
+                    <h4 class="text-2xl font-bold mb-4">FEELING</h4>
+                    <p class="text-gray-600 mb-6 max-w-md">
+                        Una marca que celebra la individualidad y la expresión personal a través de la moda. Cada pieza está diseñada para empoderar y inspirar.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="border border-gray-300 hover:bg-gray-100 p-2 rounded-lg transition-colors">
+                            <i class="fab fa-instagram text-gray-600"></i>
+                        </a>
+                        <a href="#" class="border border-gray-300 hover:bg-gray-100 p-2 rounded-lg transition-colors">
+                            <i class="fab fa-facebook text-gray-600"></i>
+                        </a>
+                        <a href="#" class="border border-gray-300 hover:bg-gray-100 p-2 rounded-lg transition-colors">
+                            <i class="fab fa-twitter text-gray-600"></i>
+                        </a>
+                    </div>
+                </div>
 
-        <div class="footer-social">
-          <a href="https://instagram.com/tu_perfil" target="_blank" rel="noreferrer" class="footer-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-            </svg>
-          </a>
-          <a href="https://tiktok.com/@tu_perfil" target="_blank" rel="noreferrer" class="footer-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />
-              <path d="M15 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
-              <path d="M15 2v20" />
-              <path d="M9 16v6" />
-              <path d="M9 10V4" />
-            </svg>
-          </a>
-          <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" rel="noreferrer" class="footer-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
-              <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
-            </svg>
-          </a>
-        </div>
+                <div class="fade-in">
+                    <h5 class="font-semibold mb-4">NAVEGACIÓN</h5>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li><a href="#editorial" class="hover:text-black transition-colors">Editorial</a></li>
+                        <li><a href="#tendencias" class="hover:text-black transition-colors">Tendencias</a></li>
+                        <li><a href="#street-style" class="hover:text-black transition-colors">Street Style</a></li>
+                        <li><a href="#lookbook" class="hover:text-black transition-colors">Lookbook</a></li>
+                    </ul>
+                </div>
 
-        <div class="footer-copyright">
-          <p>&copy; 2025 FEELING Streetwear. Todos los derechos reservados.</p>
+                <div class="fade-in">
+                    <h5 class="font-semibold mb-4">CONTACTO</h5>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li><a href="#" class="hover:text-black transition-colors">Sobre Nosotros</a></li>
+                        <li><a href="#" class="hover:text-black transition-colors">Prensa</a></li>
+                        <li><a href="#" class="hover:text-black transition-colors">Colaboraciones</a></li>
+                        <li><a href="#" class="hover:text-black transition-colors">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-200 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-gray-500">© 2024 FEELING. Todos los derechos reservados.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-sm text-gray-500 hover:text-black transition-colors">Política de Privacidad</a>
+                    <a href="#" class="text-sm text-gray-500 hover:text-black transition-colors">Términos de Uso</a>
+                </div>
+            </div>
         </div>
-      </div>
     </footer>
 
-    <!-- Fixed WhatsApp button -->
-    <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" rel="noreferrer" class="whatsapp-float">
-      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
-        <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
-      </svg>
-    </a>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
 
-    <script type="module" src="src/main.js"></script>
-  </body>
+        // Smooth scroll to sections
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Generate lookbook images
+        function generateLookbookImages() {
+            const lookbookGrid = document.getElementById('lookbook-grid');
+            const imageUrls = [
+                'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=450&q=80',
+                'https://images.unsplash.com/photo-1509631179647-0177331693ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=450&q=80',
+                'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=450&q=80',
+                'https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&auto=format&fit=crop&w=450&q=80',
+                'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=450&q=80',
+                'https://images.unsplash.com/photo-1509631179647-0177331693ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=450&q=80',
+                'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=450&q=80',
+                'https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&auto=format&fit=crop&w=450&q=80'
+            ];
+
+            imageUrls.forEach((url, index) => {
+                const lookItem = document.createElement('div');
+                lookItem.className = 'group cursor-pointer fade-in';
+                lookItem.innerHTML = `
+                    <div class="relative overflow-hidden bg-gray-100 aspect-[3/4] rounded-lg">
+                        <div class="lookbook-img w-full h-full scale-hover overlay-hover" style="background-image: url('${url}')"></div>
+                        <div class="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="bg-white text-black px-3 py-1 text-sm font-medium rounded">LOOK ${index + 1}</span>
+                        </div>
+                    </div>
+                `;
+                lookItem.addEventListener('click', () => openLook(index + 1));
+                lookbookGrid.appendChild(lookItem);
+            });
+        }
+
+        // Article interactions
+        function openArticle(articleId) {
+            alert(`Abriendo artículo: ${articleId}`);
+        }
+
+        function openLook(lookNumber) {
+            alert(`Abriendo Look ${lookNumber}`);
+        }
+
+        function toggleLike(button) {
+            const icon = button.querySelector('i');
+            if (icon.classList.contains('far')) {
+                icon.classList.remove('far');
+                icon.classList.add('fas');
+                icon.style.color = '#ef4444';
+            } else {
+                icon.classList.remove('fas');
+                icon.classList.add('far');
+                icon.style.color = '';
+            }
+        }
+
+        function shareArticle() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'FEELING - Revista de Moda',
+                    text: 'Descubre las últimas tendencias en moda',
+                    url: window.location.href
+                });
+            } else {
+                // Fallback para navegadores que no soportan Web Share API
+                navigator.clipboard.writeText(window.location.href);
+                alert('Enlace copiado al portapapeles');
+            }
+        }
+
+        // Newsletter subscription
+        function subscribeNewsletter(event) {
+            event.preventDefault();
+            const email = document.getElementById('newsletter-email').value;
+            
+            // Simulación de suscripción
+            alert(`¡Gracias por suscribirte con el email: ${email}!`);
+            document.getElementById('newsletter-email').value = '';
+        }
+
+        // Intersection Observer for fade-in animations
+        function setupScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Smooth scroll for navigation links
+        function setupSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            generateLookbookImages();
+            setupScrollAnimations();
+            setupSmoothScroll();
+            
+            // Add initial visible class to hero section
+            setTimeout(() => {
+                document.querySelector('.hero-bg .fade-in').classList.add('visible');
+            }, 500);
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('bg-white/98');
+            } else {
+                header.classList.remove('bg-white/98');
+            }
+        });
+    </script>
+</body>
 </html>
