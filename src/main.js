@@ -1,232 +1,253 @@
-import './style.css'
-import { setupCounter } from './counter.js'
-
-// Gestionar la pantalla de intro
 document.addEventListener("DOMContentLoaded", () => {
-  const introScreen = document.getElementById("intro-screen")
-  const introVideo = document.getElementById("intro-video")
-  const skipIntroBtn = document.getElementById("skip-intro")
-  const body = document.body
+  // Custom cursor
+  const cursor = document.querySelector(".cursor")
+  const cursorFollower = document.querySelector(".cursor-follower")
 
-  // Función para mostrar el contenido principal
-  function showMainContent() {
-    // Ocultar la pantalla de intro con una transición suave
-    introScreen.classList.add("hidden")
+  document.addEventListener("mousemove", (e) => {
+    cursor.style.left = e.clientX + "px"
+    cursor.style.top = e.clientY + "px"
 
-    // Habilitar el scroll después de que la intro desaparezca
     setTimeout(() => {
-      body.style.overflow = "auto"
+      cursorFollower.style.left = e.clientX + "px"
+      cursorFollower.style.top = e.clientY + "px"
+    }, 100)
+  })
 
-      // Asegurarse de que la pantalla de intro no bloquee interacciones
-      introScreen.style.pointerEvents = "none"
+  document.addEventListener("mousedown", () => {
+    cursor.style.transform = "translate(-50%, -50%) scale(0.8)"
+    cursorFollower.style.transform = "translate(-50%, -50%) scale(0.8)"
+  })
 
-      // Iniciar animaciones de la página principal
-      const heroContent = document.querySelector(".hero-content")
-      if (heroContent) {
-        heroContent.classList.add("visible")
-      }
+  document.addEventListener("mouseup", () => {
+    cursor.style.transform = "translate(-50%, -50%) scale(1)"
+    cursorFollower.style.transform = "translate(-50%, -50%) scale(1)"
+  })
 
-      // Verificar si hay elementos en el viewport y animarlos
-      const revealElements = document.querySelectorAll(".reveal-element")
-      revealElements.forEach((element) => {
-        const rect = element.getBoundingClientRect()
-        if (rect.top < window.innerHeight) {
-          element.classList.add("visible")
-        }
-      })
-    }, 500) // Este tiempo debe coincidir con la duración de la transición CSS
-  }
+  // Links and buttons cursor effect
+  const links = document.querySelectorAll("a, button, .menu-toggle, .filter-btn")
 
-  // Configurar la intro
-  function setupIntro() {
-    // Deshabilitar el scroll durante la intro
-    body.style.overflow = "hidden"
+  links.forEach((link) => {
+    link.addEventListener("mouseenter", () => {
+      cursor.style.transform = "translate(-50%, -50%) scale(1.5)"
+      cursorFollower.style.transform = "translate(-50%, -50%) scale(1.5)"
+      cursorFollower.style.borderColor = "rgba(255, 62, 62, 0.6)"
+    })
 
-    // Si hay un video de intro, configurarlo
-    if (introVideo) {
-      // Mostrar el video después de un breve retraso para que se vea el logo primero
-      setTimeout(() => {
-        introVideo.classList.add("visible")
+    link.addEventListener("mouseleave", () => {
+      cursor.style.transform = "translate(-50%, -50%) scale(1)"
+      cursorFollower.style.transform = "translate(-50%, -50%) scale(1)"
+      cursorFollower.style.borderColor = "rgba(255, 62, 62, 1)"
+    })
+  })
 
-        // Intentar reproducir el video con manejo de errores
-        introVideo.play().catch((error) => {
-          console.error("Error reproduciendo el video:", error)
-          // Si hay un error al reproducir, mostrar el contenido principal
-          showMainContent()
-        })
+  // Mobile menu toggle
+  const menuToggle = document.querySelector(".menu-toggle")
+  const nav = document.querySelector("nav")
 
-        // Detectar cuando termina el video
-        introVideo.addEventListener("ended", showMainContent)
+  menuToggle.addEventListener("click", () => {
+    menuToggle.classList.toggle("active")
+    nav.classList.toggle("active")
+    document.body.classList.toggle("menu-open")
+  })
 
-        // Fallback: si el video no se reproduce después de 5 segundos, mostrar el contenido principal
-        setTimeout(() => {
-          if (introVideo.paused || introVideo.currentTime === 0) {
-            console.log("Video no reproducido, mostrando contenido principal")
-            showMainContent()
-          }
-        }, 5000)
-      }, 2000)
-    } else {
-      // Si no hay video, mostrar el contenido principal después de una animación breve
-      setTimeout(showMainContent, 3000)
-    }
-
-    // Permitir saltar la intro haciendo clic
-    introScreen.addEventListener("click", showMainContent)
-
-    // Botón específico para saltar
-    if (skipIntroBtn) {
-      skipIntroBtn.addEventListener("click", showMainContent)
-    }
-  }
-
-  // Iniciar la intro
-  setupIntro()
-
-  // Elementos DOM
-  const menuToggle = document.getElementById("menu-toggle")
-  const mobileNav = document.getElementById("mobile-nav")
+  // Close menu when clicking on a link
   const navLinks = document.querySelectorAll(".nav-link")
-  const parallaxBg = document.getElementById("parallax-bg")
-  const contactForm = document.getElementById("contact-form")
-  const revealElements = document.querySelectorAll(".reveal-element")
-  const sections = document.querySelectorAll("section[id]")
 
-  // Manejar el menú móvil
-  if (menuToggle && mobileNav) {
-    menuToggle.addEventListener("click", () => {
-      menuToggle.classList.toggle("active")
-      mobileNav.classList.toggle("active")
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      menuToggle.classList.remove("active")
+      nav.classList.remove("active")
+      document.body.classList.remove("menu-open")
     })
+  })
 
-    // Cerrar el menú al hacer clic en un enlace
-    navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        menuToggle.classList.remove("active")
-        mobileNav.classList.remove("active")
-      })
+  // Scroll animations
+  const header = document.querySelector("header")
+  const revealElements = document.querySelectorAll(".reveal-text")
+
+  // Initial animation for hero section
+  setTimeout(() => {
+    document.querySelectorAll(".hero .reveal-text").forEach((el) => {
+      el.classList.add("active")
     })
-  }
+  }, 500)
 
-  // Parallax effect for hero background
+  // Scroll animations
   window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY
-    if (parallaxBg) {
-      parallaxBg.style.transform = `translateY(${scrollY * 0.2}px)`
-
-      // Efecto parallax adicional para el video
-      const heroVideo = document.getElementById("hero-video")
-      if (heroVideo) {
-        heroVideo.style.transform = `translateX(-50%) translateY(calc(-50% + ${scrollY * 0.1}px))`
-      }
+    // Header background on scroll
+    if (window.scrollY > 50) {
+      header.classList.add("scrolled")
+    } else {
+      header.classList.remove("scrolled")
     }
-  })
 
-  // Animación de aparición al hacer scroll
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px",
-  }
-
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible")
+    // Reveal elements on scroll
+    revealElements.forEach((el) => {
+      if (isElementInViewport(el)) {
+        el.classList.add("active")
       }
     })
-  }, observerOptions)
-
-  // Observar elementos para animarlos
-  revealElements.forEach((element) => {
-    revealObserver.observe(element)
   })
 
-  // Intersection Observer for active section
-  const sectionObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // Update active nav link
-          navLinks.forEach((link) => {
-            if (link.getAttribute("href").substring(1) === entry.target.id) {
-              link.classList.add("active")
-            } else {
-              link.classList.remove("active")
-            }
-          })
-        }
-      })
+  // Check if element is in viewport
+  function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect()
+    return rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8
+  }
+
+  // Product catalog
+  const products = [
+    {
+      id: 1,
+      name: "Passione Tee",
+      category: "tees",
+      price: "$45",
+      image: "images/product1.jpg",
     },
-    { threshold: 0.5 },
-  )
+    {
+      id: 2,
+      name: "Calma Hoodie",
+      category: "hoodies",
+      price: "$85",
+      image: "images/product2.jpg",
+    },
+    {
+      id: 3,
+      name: "Energia Jacket",
+      category: "jackets",
+      price: "$120",
+      image: "images/product3.jpg",
+    },
+    {
+      id: 4,
+      name: "Gioia Tee",
+      category: "tees",
+      price: "$45",
+      image: "images/product4.jpg",
+    },
+    {
+      id: 5,
+      name: "Tristezza Cap",
+      category: "accessories",
+      price: "$35",
+      image: "images/product5.jpg",
+    },
+    {
+      id: 6,
+      name: "Rabbia Hoodie",
+      category: "hoodies",
+      price: "$85",
+      image: "images/product6.jpg",
+    },
+    {
+      id: 7,
+      name: "Sorpresa Jacket",
+      category: "jackets",
+      price: "$130",
+      image: "images/product7.jpg",
+    },
+    {
+      id: 8,
+      name: "Paura Beanie",
+      category: "accessories",
+      price: "$30",
+      image: "images/product8.jpg",
+    },
+  ]
 
-  // Observe all sections
-  sections.forEach((section) => {
-    sectionObserver.observe(section)
+  // Populate catalog
+  const catalogGrid = document.querySelector(".catalog-grid")
+
+  function populateCatalog(filter = "all") {
+    catalogGrid.innerHTML = ""
+
+    const filteredProducts = filter === "all" ? products : products.filter((product) => product.category === filter)
+
+    filteredProducts.forEach((product) => {
+      const productCard = document.createElement("div")
+      productCard.className = "product-card"
+      productCard.innerHTML = `
+        <div class="product-image">
+          <img src="${product.image}" alt="${product.name}">
+        </div>
+        <div class="product-details">
+          <h3 class="product-name">${product.name}</h3>
+          <p class="product-category">${product.category}</p>
+          <p class="product-price">${product.price}</p>
+        </div>
+      `
+
+      catalogGrid.appendChild(productCard)
+    })
+  }
+
+  // Initial catalog population
+  populateCatalog()
+
+  // Filter buttons
+  const filterButtons = document.querySelectorAll(".filter-btn")
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const filter = this.getAttribute("data-filter")
+
+      // Update active button
+      filterButtons.forEach((btn) => btn.classList.remove("active"))
+      this.classList.add("active")
+
+      // Filter products
+      populateCatalog(filter)
+    })
   })
 
-  // Product horizontal scroll indicators
-  const productsScroll = document.querySelector(".products-scroll")
-  const scrollDots = document.querySelectorAll(".dot")
+  // Showcase item hover effect
+  const showcaseItems = document.querySelectorAll(".showcase-item")
 
-  if (productsScroll) {
-    productsScroll.addEventListener("scroll", () => {
-      const scrollPosition = productsScroll.scrollLeft
-      const maxScroll = productsScroll.scrollWidth - productsScroll.clientWidth
-      const scrollPercentage = scrollPosition / maxScroll
+  showcaseItems.forEach((item) => {
+    const color = item.getAttribute("data-color")
 
-      // Update dots based on scroll position
-      if (scrollPercentage < 0.33) {
-        updateActiveDot(0)
-      } else if (scrollPercentage < 0.66) {
-        updateActiveDot(1)
-      } else {
-        updateActiveDot(2)
-      }
+    item.addEventListener("mouseenter", () => {
+      document.documentElement.style.setProperty("--primary-color", color)
     })
-  }
 
-  function updateActiveDot(index) {
-    scrollDots.forEach((dot, i) => {
-      if (i === index) {
-        dot.classList.add("active")
-      } else {
-        dot.classList.remove("active")
-      }
+    item.addEventListener("mouseleave", () => {
+      document.documentElement.style.setProperty("--primary-color", "#ff3e3e")
     })
-  }
+  })
 
-  // Manejar el formulario de contacto
-  if (contactForm) {
-    contactForm.addEventListener("submit", (e) => {
+  // Newsletter form submission
+  const newsletterForm = document.getElementById("newsletter-form")
+
+  if (newsletterForm) {
+    newsletterForm.addEventListener("submit", function (e) {
       e.preventDefault()
 
-      // Get form data
-      const formData = new FormData(contactForm)
-      const formDataObj = Object.fromEntries(formData.entries())
+      const nameInput = document.getElementById("name")
+      const emailInput = document.getElementById("email")
 
-      // Log form data (replace with your actual form handling)
-      console.log("Datos del formulario:", formDataObj)
+      // Simple validation
+      if (nameInput.value.trim() === "" || emailInput.value.trim() === "") {
+        alert("Please fill in all fields")
+        return
+      }
 
-      // Show success message
-      alert("¡Gracias por contactarnos! Te responderemos pronto.")
-      contactForm.reset()
+      // Simulate form submission
+      const submitBtn = this.querySelector(".submit-btn")
+      submitBtn.textContent = "Subscribing..."
+
+      setTimeout(() => {
+        submitBtn.textContent = "Subscribed!"
+        nameInput.value = ""
+        emailInput.value = ""
+
+        setTimeout(() => {
+          submitBtn.textContent = "Subscribe"
+        }, 2000)
+      }, 1500)
     })
   }
 
-  // Touch events for product cards
-  const productCards = document.querySelectorAll(".product-card")
-  productCards.forEach((card) => {
-    card.addEventListener("touchstart", () => {
-      card.style.transform = "translateY(-5px)"
-    })
-
-    card.addEventListener("touchend", () => {
-      card.style.transform = ""
-    })
-  })
-
-  // Add smooth scrolling for anchor links
+  // Smooth scrolling for anchor links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       e.preventDefault()
@@ -236,7 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (targetElement) {
         window.scrollTo({
-          top: targetElement.offsetTop,
+          top: targetElement.offsetTop - 80,
           behavior: "smooth",
         })
       }
@@ -244,30 +265,177 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 })
 
-// Añadir estilos CSS adicionales para las animaciones
-const style = document.createElement("style")
-style.textContent = `
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+// Placeholder images for development
+// In a real project, these would be replaced with actual product images
+function setupPlaceholderImages() {
+  const placeholders = [
+    { selector: ".hero-image img", width: 1200, height: 800, text: "FEELING HERO" },
+    { selector: ".about-image img", width: 800, height: 600, text: "ABOUT FEELING" },
+    { selector: ".showcase-item:nth-child(1) img", width: 600, height: 800, text: "PASSIONE TEE" },
+    { selector: ".showcase-item:nth-child(2) img", width: 600, height: 800, text: "CALMA HOODIE" },
+    { selector: ".showcase-item:nth-child(3) img", width: 600, height: 800, text: "ENERGIA JACKET" },
+  ]
+
+  placeholders.forEach((placeholder) => {
+    const elements = document.querySelectorAll(placeholder.selector)
+    elements.forEach((el) => {
+      if (!el.src.includes("hero-inspiration")) {
+        // Skip if it's the hero image we already have
+        el.src = `https://via.placeholder.com/${placeholder.width}x${placeholder.height}/2d2d2a/8b4cb8?text=${placeholder.text.replace(" ", "+")}`
+      }
+    })
+  })
+
+  // Generate carousel product images
+  const carouselSlides = document.querySelectorAll(".carousel-slide img")
+  if (carouselSlides.length > 0) {
+    // Keep the first slide as the hero image if it exists
+    if (carouselSlides[0] && !carouselSlides[0].src.includes("hero-inspiration")) {
+      carouselSlides[0].src = "img/background.jpg"
+    }
+
+    // Generate placeholder images for the rest of the slides
+    for (let i = 1; i < carouselSlides.length; i++) {
+      if (carouselSlides[i]) {
+        carouselSlides[i].src = `https://via.placeholder.com/800x1000/2d2d2a/8b4cb8?text=PASSIONE+TEE+VIEW+${i + 1}`
+      }
+    }
   }
-  
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
+
+  // Set video poster
+  const videoPoster = document.getElementById("product-video")
+  if (videoPoster) {
+    videoPoster.poster = `https://via.placeholder.com/1280x720/2d2d2a/8b4cb8?text=PASSIONE+TEE+VIDEO`
   }
-  
-  .bar.active:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+// Product carousel functionality
+function setupProductCarousel() {
+  const carouselTrack = document.querySelector(".carousel-track")
+  const indicatorsContainer = document.querySelector(".carousel-indicators")
+
+  if (!carouselTrack) return
+
+  // Product images for the carousel
+  const productImages = [
+    { src: "images/hero-inspiration.jpg", alt: "Passione Tee Front" },
+    { src: "images/product-back.jpg", alt: "Passione Tee Back" },
+    { src: "images/product-detail.jpg", alt: "Passione Tee Detail" },
+    { src: "images/product-styled.jpg", alt: "Passione Tee Styled" },
+  ]
+
+  // Create slides
+  productImages.forEach((image, index) => {
+    // Create slide
+    const slide = document.createElement("div")
+    slide.className = "carousel-slide"
+    slide.innerHTML = `<img src="${image.src}" alt="${image.alt}">`
+    carouselTrack.appendChild(slide)
+
+    // Create indicator
+    const indicator = document.createElement("div")
+    indicator.className = `carousel-indicator ${index === 0 ? "active" : ""}`
+    indicator.dataset.index = index
+    indicatorsContainer.appendChild(indicator)
+  })
+
+  // Set initial width
+  const slides = document.querySelectorAll(".carousel-slide")
+  carouselTrack.style.width = `${slides.length * 100}%`
+
+  // Carousel navigation
+  let currentSlide = 0
+  const indicators = document.querySelectorAll(".carousel-indicator")
+
+  function goToSlide(index) {
+    if (index < 0) index = slides.length - 1
+    if (index >= slides.length) index = 0
+
+    carouselTrack.style.transform = `translateX(-${index * (100 / slides.length)}%)`
+
+    // Update indicators
+    indicators.forEach((ind) => ind.classList.remove("active"))
+    indicators[index].classList.add("active")
+
+    currentSlide = index
   }
-  
-  .bar.active:nth-child(2) {
-    opacity: 0;
+
+  // Event listeners
+  document.querySelector(".carousel-button.prev").addEventListener("click", () => {
+    goToSlide(currentSlide - 1)
+  })
+
+  document.querySelector(".carousel-button.next").addEventListener("click", () => {
+    goToSlide(currentSlide + 1)
+  })
+
+  indicators.forEach((indicator) => {
+    indicator.addEventListener("click", () => {
+      goToSlide(Number.parseInt(indicator.dataset.index))
+    })
+  })
+
+  // Auto advance slides
+  let slideInterval = setInterval(() => {
+    goToSlide(currentSlide + 1)
+  }, 5000)
+
+  // Pause auto-advance on hover
+  const carousel = document.querySelector(".product-carousel")
+  carousel.addEventListener("mouseenter", () => {
+    clearInterval(slideInterval)
+  })
+
+  carousel.addEventListener("mouseleave", () => {
+    slideInterval = setInterval(() => {
+      goToSlide(currentSlide + 1)
+    }, 5000)
+  })
+}
+
+// Add to cart functionality
+function setupAddToCart() {
+  const addToCartBtn = document.querySelector(".add-to-cart")
+  if (!addToCartBtn) return
+
+  addToCartBtn.addEventListener("click", function () {
+    const size = document.getElementById("size").value
+
+    // Animation feedback
+    this.textContent = "Added to Cart!"
+    this.style.backgroundColor = "#2ecc71"
+
+    setTimeout(() => {
+      this.textContent = "Add to Cart"
+      this.style.backgroundColor = ""
+    }, 2000)
+  })
+}
+
+// Video functionality
+function setupProductVideo() {
+  const video = document.getElementById("product-video")
+  if (!video) return
+
+  // Set poster image if video source is not available
+  if (!video.src || video.src === "#") {
+    video.poster = "images/video-poster.jpg"
   }
-  
-  .bar.active:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
-  }
-`
-document.head.appendChild(style)
+
+  // Click to play/pause
+  video.addEventListener("click", () => {
+    if (video.paused) {
+      video.play()
+    } else {
+      video.pause()
+    }
+  })
+}
+
+// Call all setup functions after DOM is loaded
+document.addEventListener("DOMContentLoaded", () => {
+  setupPlaceholderImages()
+  setupProductCarousel()
+  setupAddToCart()
+  setupProductVideo()
+})
