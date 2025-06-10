@@ -282,7 +282,7 @@ function setupPlaceholderImages() {
     elements.forEach((el) => {
       if (!el.src.includes("hero-inspiration")) {
         // Skip if it's the hero image we already have
-        el.src = `feelingpromo/src/img/background.avif`
+        el.src = `feelingpromo/src/img/home.avif`
       }
     })
   })

@@ -1,7 +1,7 @@
 
 /* Base Styles */
 :root {
-  --primary-color: #8b4cb8; /* Purple from the image */
+  --primary-color: #1f34b2; /* Purple from the image */
   --secondary-color: #2d2d2a; /* Dark olive/brown */
   --accent-color: #a8d5a3; /* Muted green */
   --text-color: #f4f1e8; /* Warm off-white */
@@ -107,6 +107,21 @@ header {
   align-items: center;
   z-index: 100;
   transition: background-color 0.3s ease;
+}
+
+header nav{
+  flex: 1;
+}
+
+header nav:first-of-type {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Segundo nav alineado a la derecha */
+header nav:last-of-type {
+  display: flex;
+  justify-content: flex-end;
 }
 
 header.scrolled {
@@ -244,6 +259,39 @@ nav ul li {
   height: 100%;
   z-index: 1;
   clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7) contrast(1.1);
+}
+
+/* Overlay oscuro sobre el video */
+.hero-video::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg, 
+    rgba(26, 26, 23, 0.6) 0%, 
+    rgba(26, 26, 23, 0.3) 50%,
+    rgba(26, 26, 23, 0.5) 100%
+  );
+  z-index: 2;
 }
 
 .hero-image img {

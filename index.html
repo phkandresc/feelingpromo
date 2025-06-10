@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Feeling</title>
+    <meta
+      name="description"
+      content="Feeling - Experimenta la emoción a través de la moda con nuestra colección Sensazioni"
+    />
     <link rel="icon" type="image/png" href="src/img/logo.png" />
     <link rel="stylesheet" href="src/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,7 +22,6 @@
     <div class="cursor-follower"></div>
 
     <header>
-      <div class="logo logo-font">Feeling</div>
       <nav>
         <ul>
           <li><a href="#home" class="nav-link">Home</a></li>
@@ -26,6 +29,13 @@
           <li><a href="#about" class="nav-link">About</a></li>
           <li><a href="#catalog" class="nav-link">Catalog</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="logo logo-font">Feeling</div>
+      <nav>
+        <ul>
+          <li><a href="#home" class="nav-link">Instagram</a></li>
+          <li><a href="#collection" class="nav-link">TikTok</a></li>
         </ul>
       </nav>
       <div class="menu-toggle">
@@ -36,6 +46,7 @@
     </header>
 
     <main>
+      <!-- Hero Section -->
       <section id="home" class="hero">
         <div class="hero-content">
           <h1 class="reveal-text logo-font">Feeling</h1>
@@ -47,18 +58,32 @@
             >Explore Collection</a
           >
         </div>
+        <div class="hero-video">
+          <video autoplay muted loop playsinline>
+            <source src="./src/video/video.webm" type="video/mp4" />
+            <source src="./src/video/video.webm" type="video/webm" />
+            <!-- Imagen de fallback si el video no carga -->
+            <img
+              src="./src/img/home.avif"
+              alt="Feeling Sensazioni Collection"
+            />
+          </video>
+        </div>
+        <!-- Hero image
         <div class="hero-image">
           <img
-            src="./src/img/background.avif"
+            src="./src/img/home.avif"
             alt="Feeling Sensazioni Collection"
           />
         </div>
+        -->
         <div class="scroll-indicator">
           <span>Scroll</span>
           <div class="scroll-arrow"></div>
         </div>
       </section>
 
+      <!-- Collection Section-->
       <section id="collection" class="collection">
         <h2 class="section-title">Sensazioni Collection</h2>
         <div class="collection-intro">
@@ -173,7 +198,11 @@
         <div class="product-video-section">
           <h3 class="section-subtitle">See It In Action</h3>
           <div class="video-container">
-            <video id="product-video" poster="./src/img/background.avif" controls>
+            <video
+              id="product-video"
+              poster="./src/img/background.avif"
+              controls
+            >
               <source src="#" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
