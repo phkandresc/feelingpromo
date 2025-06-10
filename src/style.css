@@ -1,3 +1,4 @@
+
 /* Base Styles */
 :root {
   --primary-color: #8b4cb8; /* Purple from the image */
@@ -13,6 +14,18 @@
 @font-face {
   font-family: "Sky Sans";
   src: url("./fonts/SkySans.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bellarina";
+  src: url("./fonts/Bellarina.otf") format("opentype");
+}
+
+.logo-font {
+  font-family: "Bellarina", sans-serif;
   font-weight: normal;
   font-style: normal;
   font-display: swap;

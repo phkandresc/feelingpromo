@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  setupPlaceholderImages()
   // Custom cursor
   const cursor = document.querySelector(".cursor")
   const cursorFollower = document.querySelector(".cursor-follower")
@@ -102,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
       name: "Passione Tee",
       category: "tees",
       price: "$45",
-      image: "images/product1.jpg",
+      image: "feelingpromo/src/img/background.avif",
     },
     {
       id: 2,
@@ -281,7 +282,7 @@ function setupPlaceholderImages() {
     elements.forEach((el) => {
       if (!el.src.includes("hero-inspiration")) {
         // Skip if it's the hero image we already have
-        el.src = `https://via.placeholder.com/${placeholder.width}x${placeholder.height}/2d2d2a/8b4cb8?text=${placeholder.text.replace(" ", "+")}`
+        el.src = `feelingpromo/src/img/background.avif`
       }
     })
   })
@@ -291,13 +292,13 @@ function setupPlaceholderImages() {
   if (carouselSlides.length > 0) {
     // Keep the first slide as the hero image if it exists
     if (carouselSlides[0] && !carouselSlides[0].src.includes("hero-inspiration")) {
-      carouselSlides[0].src = "img/background.jpg"
+      carouselSlides[0].src = "./src/img/background.avif"
     }
 
     // Generate placeholder images for the rest of the slides
     for (let i = 1; i < carouselSlides.length; i++) {
       if (carouselSlides[i]) {
-        carouselSlides[i].src = `https://via.placeholder.com/800x1000/2d2d2a/8b4cb8?text=PASSIONE+TEE+VIEW+${i + 1}`
+        carouselSlides[i].src = `feelingpromo/src/img/background.avif`
       }
     }
   }
@@ -305,7 +306,7 @@ function setupPlaceholderImages() {
   // Set video poster
   const videoPoster = document.getElementById("product-video")
   if (videoPoster) {
-    videoPoster.poster = `https://via.placeholder.com/1280x720/2d2d2a/8b4cb8?text=PASSIONE+TEE+VIDEO`
+    videoPoster.poster = `feelingpromo/src/img/background.avif`
   }
 }
 
@@ -318,10 +319,10 @@ function setupProductCarousel() {
 
   // Product images for the carousel
   const productImages = [
-    { src: "images/hero-inspiration.jpg", alt: "Passione Tee Front" },
-    { src: "images/product-back.jpg", alt: "Passione Tee Back" },
-    { src: "images/product-detail.jpg", alt: "Passione Tee Detail" },
-    { src: "images/product-styled.jpg", alt: "Passione Tee Styled" },
+    { src: "feelingpromo/src/img/background.avif", alt: "Passione Tee Front" },
+    { src: "feelingpromo/src/img/background.avif", alt: "Passione Tee Back" },
+    { src: "feelingpromo/src/img/background.avif", alt: "Passione Tee Detail" },
+    { src: "./src/img/background.avif", alt: "Passione Tee Styled" },
   ]
 
   // Create slides
@@ -419,7 +420,7 @@ function setupProductVideo() {
 
   // Set poster image if video source is not available
   if (!video.src || video.src === "#") {
-    video.poster = "images/video-poster.jpg"
+    video.poster = "feelingpromo/src/img/background.avif"
   }
 
   // Click to play/pause
