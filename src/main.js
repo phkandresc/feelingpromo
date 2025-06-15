@@ -1,6 +1,5 @@
 // Main JavaScript file for the Feeling Promo website
 document.addEventListener("DOMContentLoaded", () => {
-  setupPlaceholderImages()
   // Custom cursor
   const cursor = document.querySelector(".cursor")
   const cursorFollower = document.querySelector(".cursor-follower")
@@ -267,49 +266,8 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 })
 
-// Placeholder images for development
-// In a real project, these would be replaced with actual product images
-function setupPlaceholderImages() {
-  const placeholders = [
-    { selector: ".hero-image img", width: 1200, height: 800, text: "FEELING HERO" },
-    { selector: ".about-image img", width: 800, height: 600, text: "ABOUT FEELING" },
-    { selector: ".showcase-item:nth-child(1) img", width: 600, height: 800, text: "PASSIONE TEE" },
-    { selector: ".showcase-item:nth-child(2) img", width: 600, height: 800, text: "CALMA HOODIE" },
-    { selector: ".showcase-item:nth-child(3) img", width: 600, height: 800, text: "ENERGIA JACKET" },
-  ]
-
-  placeholders.forEach((placeholder) => {
-    const elements = document.querySelectorAll(placeholder.selector)
-    elements.forEach((el) => {
-      if (!el.src.includes("hero-inspiration")) {
-        // Skip if it's the hero image we already have
-        el.src = `feelingpromo/src/img/home.avif`
-      }
-    })
-  })
-
-  // Generate carousel product images
-  const carouselSlides = document.querySelectorAll(".carousel-slide img")
-  if (carouselSlides.length > 0) {
-    // Keep the first slide as the hero image if it exists
-    if (carouselSlides[0] && !carouselSlides[0].src.includes("hero-inspiration")) {
-      carouselSlides[0].src = "../src/img/background.avif"
-    }
-
-    // Generate placeholder images for the rest of the slides
-    for (let i = 1; i < carouselSlides.length; i++) {
-      if (carouselSlides[i]) {
-        carouselSlides[i].src = `feelingpromo/src/img/background.avif`
-      }
-    }
-  }
-
-  // Set video poster
-  const videoPoster = document.getElementById("product-video")
-  if (videoPoster) {
-    videoPoster.poster = `feelingpromo/src/img/background.avif`
-  }
-}
+// Importa las imágenes usando la sintaxis de Vite para que las rutas sean correctas en producción
+import homeImg from './img/home.avif'
 
 // Product carousel functionality
 function setupProductCarousel() {
@@ -320,10 +278,8 @@ function setupProductCarousel() {
 
   // Product images for the carousel
   const productImages = [
-    { src: "./src/img/home.avif", alt: "Passione Tee Front" },
-    { src: "./src/img/home.avif", alt: "Passione Tee Back" },
-    { src: "./src/img/home.avif", alt: "Passione Tee Detail" },
-    { src: "./src/img/home.avif", alt: "Passione Tee Styled" },
+    { src: homeImg, alt: "Producto 1" },
+    { src: homeImg, alt: "Producto 2" }
   ]
 
   // Create slides
@@ -436,7 +392,6 @@ function setupProductVideo() {
 
 // Call all setup functions after DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
-  setupPlaceholderImages()
   setupProductCarousel()
   setupAddToCart()
   setupProductVideo()
