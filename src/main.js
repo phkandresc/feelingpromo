@@ -1,3 +1,4 @@
+// Main JavaScript file for the Feeling Promo website
 document.addEventListener("DOMContentLoaded", () => {
   setupPlaceholderImages()
   // Custom cursor
