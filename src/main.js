@@ -293,7 +293,7 @@ function setupPlaceholderImages() {
   if (carouselSlides.length > 0) {
     // Keep the first slide as the hero image if it exists
     if (carouselSlides[0] && !carouselSlides[0].src.includes("hero-inspiration")) {
-      carouselSlides[0].src = "./src/img/background.avif"
+      carouselSlides[0].src = "../src/img/background.avif"
     }
 
     // Generate placeholder images for the rest of the slides
@@ -320,10 +320,10 @@ function setupProductCarousel() {
 
   // Product images for the carousel
   const productImages = [
-    { src: "feelingpromo/src/img/background.avif", alt: "Passione Tee Front" },
-    { src: "feelingpromo/src/img/background.avif", alt: "Passione Tee Back" },
-    { src: "feelingpromo/src/img/background.avif", alt: "Passione Tee Detail" },
-    { src: "./src/img/background.avif", alt: "Passione Tee Styled" },
+    { src: "./src/img/home.avif", alt: "Passione Tee Front" },
+    { src: "./src/img/home.avif", alt: "Passione Tee Back" },
+    { src: "./src/img/home.avif", alt: "Passione Tee Detail" },
+    { src: "./src/img/home.avif", alt: "Passione Tee Styled" },
   ]
 
   // Create slides
