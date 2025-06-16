@@ -12,8 +12,8 @@
   --transition-speed: 0.3s;
 }
 @font-face {
-  font-family: "Sky Sans";
-  src: url("./fonts/SkySans.otf") format("opentype");
+  font-family: "Hanken Grotesk";
+  src: url("./fonts/HankenGrotesk-VariableFont_wght.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -24,6 +24,11 @@
   src: url("./fonts/Bellarina.otf") format("opentype");
 }
 
+@font-face {
+  font-family: "SixCaps";
+  src: url("./fonts/SixCaps-Regular.ttf") format("truetype");
+}
+
 .logo-font {
   font-family: "Bellarina", sans-serif;
   font-weight: normal;
@@ -31,10 +36,16 @@
   font-display: swap;
 }
 
+.collection-font {
+  font-family: "SixCaps", sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* Usa tu fuente personalizada como base */
 body {
-  font-family: "Sky Sans", "Montserrat", sans-serif; 
+  font-family: "Hanken Grotesk", "Montserrat", sans-serif; 
 }
 
 * {
@@ -49,7 +60,7 @@ html {
 }
 
 body {
-  font-family: 'Sky Sans',"Montserrat", sans-serif;
+  font-family: 'Hanken Grotesk',"Montserrat", sans-serif;
   background: linear-gradient(135deg, var(--background-color) 0%, #1f1f1c 100%);
   background-attachment: fixed;
   color: var(--text-color);

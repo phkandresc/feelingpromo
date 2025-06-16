@@ -1,4 +1,6 @@
 // Main JavaScript file for the Feeling Promo website
+
+// --- CURSOR PERSONALIZADO ---
 document.addEventListener("DOMContentLoaded", () => {
   // Custom cursor
   const cursor = document.querySelector(".cursor")
@@ -41,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   })
 
-  // Mobile menu toggle
+  // --- MENÚ MÓVIL ---
   const menuToggle = document.querySelector(".menu-toggle")
   const nav = document.querySelector("nav")
 
@@ -51,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.toggle("menu-open")
   })
 
-  // Close menu when clicking on a link
+  // --- CERRAR MENÚ AL HACER CLICK EN LINK ---
   const navLinks = document.querySelectorAll(".nav-link")
 
   navLinks.forEach((link) => {
@@ -62,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   })
 
-  // Scroll animations
+  // --- ANIMACIONES DE SCROLL Y HERO ---
   const header = document.querySelector("header")
   const revealElements = document.querySelectorAll(".reveal-text")
 
@@ -96,14 +98,14 @@ document.addEventListener("DOMContentLoaded", () => {
     return rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8
   }
 
-  // Product catalog
+  // --- CATÁLOGO DE PRODUCTOS ---
   const products = [
     {
       id: 1,
       name: "Passione Tee",
       category: "tees",
       price: "$45",
-      image: "feelingpromo/src/img/background.avif",
+      image: "feelingpromo/src/img/background.avif", // <-- Imagen de ejemplo
     },
     {
       id: 2,
@@ -185,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initial catalog population
   populateCatalog()
 
-  // Filter buttons
+  // --- FILTROS DE CATÁLOGO ---
   const filterButtons = document.querySelectorAll(".filter-btn")
 
   filterButtons.forEach((button) => {
@@ -201,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   })
 
-  // Showcase item hover effect
+  // --- EFECTO HOVER EN SHOWCASE ---
   const showcaseItems = document.querySelectorAll(".showcase-item")
 
   showcaseItems.forEach((item) => {
@@ -216,7 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   })
 
-  // Newsletter form submission
+  // --- FORMULARIO NEWSLETTER ---
   const newsletterForm = document.getElementById("newsletter-form")
 
   if (newsletterForm) {
@@ -248,7 +250,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 
-  // Smooth scrolling for anchor links
+  // --- SCROLL SUAVE EN ANCLAS ---
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       e.preventDefault()
@@ -266,20 +268,20 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 })
 
+// --- CARRUSEL DE PRODUCTOS ---
 // Importa las imágenes usando la sintaxis de Vite para que las rutas sean correctas en producción
 import homeImg from './img/home.avif'
+// Puedes importar más imágenes aquí
 
-// Product carousel functionality
 function setupProductCarousel() {
   const carouselTrack = document.querySelector(".carousel-track")
   const indicatorsContainer = document.querySelector(".carousel-indicators")
-
   if (!carouselTrack) return
 
-  // Product images for the carousel
+  // Imágenes del carrusel (puedes eliminar o cambiar las de ejemplo)
   const productImages = [
-    { src: homeImg, alt: "Producto 1" },
-    { src: homeImg, alt: "Producto 2" }
+    { src: homeImg, alt: "Producto 1" }, // <-- Imagen de ejemplo
+    { src: homeImg, alt: "Producto 2" }  // <-- Imagen de ejemplo
   ]
 
   // Create slides
@@ -351,7 +353,7 @@ function setupProductCarousel() {
   })
 }
 
-// Add to cart functionality
+// --- AGREGAR AL CARRITO ---
 function setupAddToCart() {
   const addToCartBtn = document.querySelector(".add-to-cart")
   if (!addToCartBtn) return
@@ -370,16 +372,14 @@ function setupAddToCart() {
   })
 }
 
-// Video functionality
+// --- VIDEO DE PRODUCTO ---
 function setupProductVideo() {
   const video = document.getElementById("product-video")
   if (!video) return
-
-  // Set poster image if video source is not available
+  // Set poster image si no hay video
   if (!video.src || video.src === "#") {
-    video.poster = "feelingpromo/src/img/background.avif"
+    video.poster = homeImg// <-- Imagen de ejemplo
   }
-
   // Click to play/pause
   video.addEventListener("click", () => {
     if (video.paused) {
@@ -390,7 +390,7 @@ function setupProductVideo() {
   })
 }
 
-// Call all setup functions after DOM is loaded
+// --- INICIALIZACIÓN ---
 document.addEventListener("DOMContentLoaded", () => {
   setupProductCarousel()
   setupAddToCart()
