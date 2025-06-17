@@ -390,9 +390,71 @@ function setupProductVideo() {
   })
 }
 
+// --- VIDEO HERO PING-PONG ---
+function setupHeroVideoPingPong() {
+  const heroVideo = document.querySelector('.hero-video video');
+  if (!heroVideo) return;
+
+  // Quitar loop si está puesto
+  heroVideo.removeAttribute('loop');
+  // Velocidad personalizada
+  heroVideo.playbackRate = 1.3;
+
+  let reverse = false;
+  let rafId;
+
+  // Función para reproducir hacia atrás
+  function playReverse() {
+    if (!reverse) return;
+    if (heroVideo.currentTime <= 0) {
+      reverse = false;
+      heroVideo.playbackRate = 1.3;
+      heroVideo.play();
+      return;
+    }
+    heroVideo.currentTime -= 0.033 * heroVideo.playbackRate; // ~30fps
+    rafId = requestAnimationFrame(playReverse);
+  }
+
+  heroVideo.addEventListener('ended', () => {
+    reverse = true;
+    heroVideo.pause();
+    heroVideo.playbackRate = 1.3;
+    playReverse();
+  });
+
+  heroVideo.addEventListener('play', () => {
+    if (reverse) {
+      reverse = false;
+      cancelAnimationFrame(rafId);
+    }
+  });
+
+  heroVideo.addEventListener('pause', () => {
+    if (reverse) {
+      cancelAnimationFrame(rafId);
+    }
+  });
+
+  // Cuando termina de ir hacia atrás, vuelve a reproducir normal
+  heroVideo.addEventListener('timeupdate', () => {
+    if (reverse && heroVideo.currentTime <= 0) {
+      reverse = false;
+      heroVideo.playbackRate = 1.3;
+      heroVideo.play();
+    }
+  });
+
+  // Iniciar velocidad al cargar
+  heroVideo.addEventListener('loadedmetadata', () => {
+    heroVideo.playbackRate = 1.3;
+  });
+}
+
 // --- INICIALIZACIÓN ---
 document.addEventListener("DOMContentLoaded", () => {
   setupProductCarousel()
   setupAddToCart()
   setupProductVideo()
+  setupHeroVideoPingPong() // <--- nuevo
 })
