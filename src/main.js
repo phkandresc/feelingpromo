@@ -20,29 +20,64 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   })
 
-  // --- MENÚ MÓVIL ---
+  // --- MENÚ MÓVIL MEJORADO ---
   const menuToggle = document.querySelector(".menu-toggle")
-  const nav = document.querySelector("nav")
+  const navPrimary = document.querySelector(".nav--primary")
+  const navSocial = document.querySelector(".nav--social")
+  const navOverlay = document.querySelector(".nav-overlay")
+  const body = document.body
 
-  menuToggle.addEventListener("click", () => {
-    menuToggle.classList.toggle("active")
-    nav.classList.toggle("active")
-    document.body.classList.toggle("menu-open")
-  })
+  if (menuToggle && navPrimary && navOverlay) {
+    menuToggle.addEventListener("click", () => {
+      const isActive = menuToggle.classList.contains("active")
+      
+      menuToggle.classList.toggle("active")
+      navPrimary.classList.toggle("active")
+      // La navegación social se muestra automáticamente cuando la principal está activa
+      if (navSocial) {
+        navSocial.classList.toggle("active")
+      }
+      navOverlay.classList.toggle("active")
+      body.classList.toggle("menu-open")
+      
+      // Actualizar aria-expanded para accesibilidad
+      menuToggle.setAttribute("aria-expanded", !isActive)
+      navOverlay.setAttribute("aria-hidden", isActive)
+    })
+
+    // Cerrar menú al hacer click en overlay
+    navOverlay.addEventListener("click", () => {
+      menuToggle.classList.remove("active")
+      navPrimary.classList.remove("active")
+      if (navSocial) {
+        navSocial.classList.remove("active")
+      }
+      navOverlay.classList.remove("active")
+      body.classList.remove("menu-open")
+      menuToggle.setAttribute("aria-expanded", "false")
+      navOverlay.setAttribute("aria-hidden", "true")
+    })
+  }
 
   // --- CERRAR MENÚ AL HACER CLICK EN LINK ---
-  const navLinks = document.querySelectorAll(".nav-link")
+  const navLinks = document.querySelectorAll(".nav__link")
 
   navLinks.forEach((link) => {
     link.addEventListener("click", () => {
       menuToggle.classList.remove("active")
-      nav.classList.remove("active")
-      document.body.classList.remove("menu-open")
+      navPrimary.classList.remove("active")
+      if (navSocial) {
+        navSocial.classList.remove("active")
+      }
+      navOverlay.classList.remove("active")
+      body.classList.remove("menu-open")
+      menuToggle.setAttribute("aria-expanded", "false")
+      navOverlay.setAttribute("aria-hidden", "true")
     })
   })
 
   // --- ANIMACIONES DE SCROLL Y HERO ---
-  const header = document.querySelector("header")
+  const header = document.querySelector(".header")
   const revealElements = document.querySelectorAll(".reveal-text")
 
   // Initial animation for hero section
@@ -52,21 +87,41 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }, 500)
 
-  // Scroll animations
+  // --- EFECTOS AVANZADOS DEL HEADER ---
+  let lastScrollY = window.scrollY
+  let scrollTimeout
+
   window.addEventListener("scroll", () => {
+    const currentScrollY = window.scrollY
+    
     // Header background on scroll
-    if (window.scrollY > 50) {
+    if (currentScrollY > 50) {
       header.classList.add("scrolled")
     } else {
       header.classList.remove("scrolled")
     }
 
-    // Reveal elements on scroll
-    revealElements.forEach((el) => {
-      if (isElementInViewport(el)) {
-        el.classList.add("active")
+    // Header hide/show en scroll (solo en móvil)
+    if (window.innerWidth <= 768) {
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down - hide header
+        header.style.transform = "translateY(-100%)"
+      } else {
+        // Scrolling up - show header
+        header.style.transform = "translateY(0)"
       }
-    })
+    }
+
+    lastScrollY = currentScrollY
+
+    // Clear timeout and set a new one
+    clearTimeout(scrollTimeout)
+    scrollTimeout = setTimeout(() => {
+      // Always show header when scroll stops
+      if (header) {
+        header.style.transform = "translateY(0)"
+      }
+    }, 150)
   })
 
   // Check if element is in viewport
