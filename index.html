@@ -18,9 +18,6 @@
     />
   </head>
   <body>
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-
     <header>
       <nav>
         <ul>
@@ -48,36 +45,48 @@
     <main>
       <!-- Hero Section -->
       <section id="home" class="hero">
-        <div class="hero-content">
-          <!-- Logo
-          <h1 class="reveal-text logo-font">Feeling</h1>-->
-          <h2 class="reveal-text delay-1">SENSAZIONI</h2>
-          <p class="reveal-text delay-2">
-            Experience the emotion through fashion
-          </p>
-          <a href="#collection" class="cta-button reveal-text delay-3"
-            >Explore Collection</a
-          >
-        </div>
-        <div class="hero-video">
-          <video autoplay muted playsinline>
+        <video class="hero-video" autoplay muted playsinline loop>
             <source src="./src/video/home.mp4" type="video/mp4" />
-            <!-- <source src="./src/video/video.webm" type="video/webm" /> -->
-            <!-- Imagen de fallback si el video no carga -->
-            <img
-              src="./src/img/home.avif"
-              alt="Feeling Sensazioni Collection"
-            />
-          </video>
+        </video>
+        <!-- Partículas flotantes -->
+        <div class="floating-particles">
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
         </div>
-        <!-- Hero image
-        <div class="hero-image">
-          <img
-            src="./src/img/home.avif"
-            alt="Feeling Sensazioni Collection"
-          />
+
+        <div class="hero-container">
+          <!-- Título principal -->
+          <div class="hero-title">
+            <span class="word">SENSA</span>
+            <span class="word">ZIONI</span>
+          </div>
+
+
+          <!-- Contenido -->
+          <div class="hero-content">
+            <p class="hero-subtitle">Descubre la emoción a través de la moda</p>
+            <p class="hero-description">
+              Cada prenda cuenta una historia, cada diseño despierta una
+              sensación única. En SENSAZIONI creemos que la moda es más que
+              vestir, es expresar quien eres. Sumérgete en nuestra colección y
+              encuentra tu estilo perfecto que refleje tu personalidad
+              auténtica.
+            </p>
+            <a href="#collection" class="hero-cta">
+              <span>Explorar Colección</span>
+              <div class="cta-arrow">→</div>
+            </a>
+          </div>
         </div>
-        -->
+
+        <!-- Indicador de scroll -->
         <div class="scroll-indicator">
           <span>Scroll</span>
           <div class="scroll-arrow"></div>
